@@ -10,7 +10,7 @@ const Nav = ({active, setActive}) => {
   return (
     <nav>
         <Link className={active==="Home" ? 'active' : ''} onClick={setPage} to='/'>Products</Link>
-        <Link className={active==="Fome" ? 'active' : ''} onClick={setPage} to='/form'>Form </Link>
+        <Link className={active==="Form" ? 'active' : ''} onClick={setPage} to='/form'>Form </Link>
     </nav>
   )
 }

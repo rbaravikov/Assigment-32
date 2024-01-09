@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const Form = () => {
+const Form = ({setActive}) => {
 
   const BASE_URL = "https://sophisticated-humane-dandelion.glitch.me/"
   const [inputs, setInputs] = useState({})
@@ -15,6 +15,8 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
+    if(!inputs.image || !inputs.price || !inputs.title ) return alert('Iveskite visus duomenis')
+
     try {
         const resp = await fetch(BASE_URL, {
         method: "POST",
@@ -27,6 +29,7 @@ const Form = () => {
         if(resp.ok) {     
         const result = await resp.json()
         alert("Success")
+        setActive('Home')
         navigate("/")
         }
 
