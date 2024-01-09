@@ -33,7 +33,7 @@ const Form = () => {
     } catch (error) {
         console.error("Error during POST request:", error)
     }
-  }
+}
 
   return (
     <form action="#">

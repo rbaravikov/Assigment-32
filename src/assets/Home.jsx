@@ -17,18 +17,12 @@ const Home = () => {
 
   const handleDelete = async (id) => {
     try {
-        const resp = await fetch(BASE_URL + id, {
-          method: "DELETE",
-          })
-
-        if(resp.ok) {     
-          const result = await resp.json()
-          alert(BASE_URL)
-          alert(id)
-          alert(resp)
-        }
-
-    } catch (error) {
+      fetch(BASE_URL + "/" + id, {
+        method: "DELETE"
+      })
+      .then(resp => resp.json())
+      .then(data => location.reload())
+      } catch (error) {
         console.error("Error during DELETE request:", error)
     }
   }
@@ -41,7 +35,7 @@ const Home = () => {
           <img src={el.image} alt={el.title}/>
           <p>{el.title}</p>
           <p className="price">{el.price}</p>
-          <button name={el.id} className="button" onClick={(name) => handleDelete(name)}>Ištrinti</button>
+          <button name={el.id} className="button" onClick={() => handleDelete(el.id)}>Ištrinti</button>
         </div>
       ))}
       
