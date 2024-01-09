@@ -15,6 +15,25 @@ const Home = () => {
       fetchData()
   }, [])
 
+  const handleDelete = async (id) => {
+    try {
+        const resp = await fetch(BASE_URL + id, {
+          method: "DELETE",
+          })
+
+        if(resp.ok) {     
+          const result = await resp.json()
+          alert(BASE_URL)
+          alert(id)
+          alert(resp)
+        }
+
+    } catch (error) {
+        console.error("Error during DELETE request:", error)
+    }
+  }
+  
+
   return (
     <section id="app" className="products">
       {data.map((el, index) => (
@@ -22,7 +41,7 @@ const Home = () => {
           <img src={el.image} alt={el.title}/>
           <p>{el.title}</p>
           <p className="price">{el.price}</p>
-          <button class="button">Ištrinti</button>
+          <button name={el.id} className="button" onClick={(name) => handleDelete(name)}>Ištrinti</button>
         </div>
       ))}
       
