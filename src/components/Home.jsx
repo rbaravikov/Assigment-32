@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import '../scss/home.scss'
 
 const Home = () => {
 
